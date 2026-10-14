@@ -23,8 +23,8 @@ async def create_user(
                 async with get_user_manager_context(user_db) as user_manager:
                     await user_manager.create(
                         UserCreate(
-                            email=email, 
-                            password=password, 
+                            email=email,
+                            password=password,
                             is_superuser=is_superuser
                         )
                     )
@@ -34,7 +34,7 @@ async def create_user(
 
 
 async def create_first_superuser():
-    if (settings.first_superuser_email is not None 
+    if (settings.first_superuser_email is not None
             and settings.first_superuser_password is not None):
         await create_user(
             email=settings.first_superuser_email,
