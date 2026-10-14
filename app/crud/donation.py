@@ -2,7 +2,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.crud.base import CRUDBase
-from app.models import Donation, Users
+from app.models import Donation, User
 
 
 class CRUDDonation(CRUDBase):
@@ -10,7 +10,7 @@ class CRUDDonation(CRUDBase):
     async def get_by_user(
             self,
             session: AsyncSession,
-            user: Users,
+            user: User,
     ):
         all_objs = await session.execute(
             select(Donation)

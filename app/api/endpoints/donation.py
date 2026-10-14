@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends
 from app.core.db import SessionDep
 from app.core.user import current_user, current_superuser
 from app.crud.donation import donation_crud
-from app.models import Users
+from app.models import User
 from app.schemas.donation import (
     DonationCreate,
     DonationCreateDB,
@@ -28,7 +28,7 @@ router = APIRouter()
 async def create_donation(
     donation: DonationCreate,
     session: SessionDep,
-    user: Annotated[Users, Depends(current_user)],
+    user: Annotated[User, Depends(current_user)],
 ) -> DonationDB:
     """
     ## Создание пожертвования.
@@ -95,7 +95,7 @@ async def get_all_donations(
 )
 async def get_my_donations(
     session: SessionDep,
-    user: Annotated[Users, Depends(current_user)],
+    user: Annotated[User, Depends(current_user)],
 ) -> list[DonationDB]:
     """
     ## Получение списка собственных пожертвований.

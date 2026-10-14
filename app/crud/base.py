@@ -4,7 +4,7 @@ from fastapi.encoders import jsonable_encoder
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models import Users
+from app.models import User
 
 
 class CRUDBase:
@@ -35,7 +35,7 @@ class CRUDBase:
         self,
         obj_in,
         session: AsyncSession,
-        user: Optional[Users] = None,
+        user: Optional[User] = None,
         commit: bool = True
     ):
         obj_in_data = obj_in.dict()
