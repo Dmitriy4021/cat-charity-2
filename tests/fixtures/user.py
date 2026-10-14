@@ -5,16 +5,16 @@ from conftest import (
 from fastapi import HTTPException
 from fastapi.testclient import TestClient
 
-from app.models.user import User
+from app.models.user import Users
 
-superuser = User(
+superuser = Users(
     id=1,
     is_active=True,
     is_verified=True,
     is_superuser=True,
 )
 
-user = User(
+user = Users(
     id=2,
     is_active=True,
     is_verified=True,
