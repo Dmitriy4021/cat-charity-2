@@ -1,3 +1,4 @@
+import logging
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -5,6 +6,9 @@ from fastapi import FastAPI
 from app.api.routers import main_router
 from app.core.config import settings
 from app.core.init_db import create_first_superuser
+
+logging.lastResort.setLevel(logging.INFO)
+logging.getLogger().setLevel(logging.INFO)
 
 
 @asynccontextmanager
