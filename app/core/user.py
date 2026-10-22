@@ -1,3 +1,4 @@
+import logging
 from typing import Annotated, Optional, Union
 
 from fastapi import Depends, Request
@@ -14,6 +15,8 @@ from app.core.db import get_async_session
 from app.core.config import settings
 from app.models import User
 from app.schemas.user import UserCreate
+
+logger = logging.getLogger(__name__)
 
 
 async def get_user_db(
@@ -59,7 +62,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
             user: User,
             request: Optional[Request] = None,
     ):
-        print(f'Пользователь {user.email} зарегистрирован.')
+        logger.info('Пользователь %s зарегистрирован.', user.email)
 
 
 async def get_user_manager(user_db=Depends(get_user_db)):
