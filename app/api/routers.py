@@ -3,6 +3,7 @@ from fastapi import APIRouter
 from app.api.endpoints import (
     charity_project_router,
     donation_router,
+    yandex_api_router,
 )
 from app.core.user import auth_backend, fastapi_users
 from app.schemas.user import UserCreate, UserRead, UserUpdate
@@ -38,4 +39,9 @@ main_router.include_router(
     users_router,
     prefix='/users',
     tags=['users'],
+)
+main_router.include_router(
+    yandex_api_router,
+    prefix='/yandex',
+    tags=['Yandex Disk'],
 )

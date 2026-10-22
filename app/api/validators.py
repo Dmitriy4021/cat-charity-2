@@ -91,3 +91,14 @@ def check_availability_invested_amount(
             status_code=HTTPStatus.BAD_REQUEST,
             detail="В проект были внесены средства, не подлежит удалению!"
         )
+
+
+async def check_closed_projects(session):
+    closed_projects = await (
+        charity_project_crud.get_projects_by_completion_rate(session))
+    if closed_projects == []:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND,
+            detail='Завершенных проектов не найдено.'
+        )
+    return closed_projects

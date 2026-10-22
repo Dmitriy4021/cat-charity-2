@@ -20,5 +20,8 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(env_file='.env')
 
+    yandex_disk_token: Optional[str] = None
+    report_format: str = "%d.%m.%Y %H:%M:%S"
+
 
 settings = Settings()
